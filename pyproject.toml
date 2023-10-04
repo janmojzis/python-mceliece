@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = 'mceliece'
+description = 'Python wrapper around implementation of the Classic Mceliece cryptosystems'
+readme = "README.md"
+requires-python = ">=3.7"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Jan Mojžíš", email = "jan.mojzis@gmail.com"},
+]
+dynamic = ["version"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
