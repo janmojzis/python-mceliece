@@ -59,7 +59,7 @@ class _KEM:
         Keypair - randomly generates secret key 'sk' and corresponding public key 'pk'.
         Returns:
             pk (bytes): public key
-            sk (bytes): sectet key
+            sk (bytes): secret key
         '''
         pk = _ct.create_string_buffer(self.PUBLICKEYBYTES)
         sk = _ct.create_string_buffer(self.SECRETKEYBYTES)
