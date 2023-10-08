@@ -2,6 +2,7 @@ from typing import Tuple as _Tuple
 import ctypes as _ct
 from ._lib import _lib, _check_input
 
+
 class _KEM:
     def __init__(self) -> None:
         '''
@@ -63,183 +64,222 @@ class _KEM:
             raise Exception('dec failed')
         return k.raw
 
-class mceliece6960119(_KEM):
-    PUBLICKEYBYTES=1047319
-    SECRETKEYBYTES=13948
-    CIPHERTEXTBYTES=194
-    BYTES=32
-    _prefix="mceliece_kem_6960119"
 
-mceliece6960119=mceliece6960119()
+class mceliece6960119(_KEM):
+    PUBLICKEYBYTES = 1047319
+    SECRETKEYBYTES = 13948
+    CIPHERTEXTBYTES = 194
+    BYTES = 32
+    _prefix = "mceliece_kem_6960119"
+
+
+mceliece6960119 = mceliece6960119()
+
 
 class mceliece6960119f(_KEM):
-    PUBLICKEYBYTES=1047319
-    SECRETKEYBYTES=13948
-    CIPHERTEXTBYTES=194
-    BYTES=32
-    _prefix="mceliece_kem_6960119f"
+    PUBLICKEYBYTES = 1047319
+    SECRETKEYBYTES = 13948
+    CIPHERTEXTBYTES = 194
+    BYTES = 32
+    _prefix = "mceliece_kem_6960119f"
 
-mceliece6960119f=mceliece6960119f()
+
+mceliece6960119f = mceliece6960119f()
+
 
 class mceliece6960119pc(_KEM):
-    PUBLICKEYBYTES=1047319
-    SECRETKEYBYTES=13948
-    CIPHERTEXTBYTES=226
-    BYTES=32
-    _prefix="mceliece_kem_6960119pc"
+    PUBLICKEYBYTES = 1047319
+    SECRETKEYBYTES = 13948
+    CIPHERTEXTBYTES = 226
+    BYTES = 32
+    _prefix = "mceliece_kem_6960119pc"
 
-mceliece6960119pc=mceliece6960119pc()
+
+mceliece6960119pc = mceliece6960119pc()
+
 
 class mceliece6960119pcf(_KEM):
-    PUBLICKEYBYTES=1047319
-    SECRETKEYBYTES=13948
-    CIPHERTEXTBYTES=226
-    BYTES=32
-    _prefix="mceliece_kem_6960119pcf"
+    PUBLICKEYBYTES = 1047319
+    SECRETKEYBYTES = 13948
+    CIPHERTEXTBYTES = 226
+    BYTES = 32
+    _prefix = "mceliece_kem_6960119pcf"
 
-mceliece6960119pcf=mceliece6960119pcf()
+
+mceliece6960119pcf = mceliece6960119pcf()
+
 
 class mceliece6688128(_KEM):
-    PUBLICKEYBYTES=1044992
-    SECRETKEYBYTES=13932
-    CIPHERTEXTBYTES=208
-    BYTES=32
-    _prefix="mceliece_kem_6688128"
+    PUBLICKEYBYTES = 1044992
+    SECRETKEYBYTES = 13932
+    CIPHERTEXTBYTES = 208
+    BYTES = 32
+    _prefix = "mceliece_kem_6688128"
 
-mceliece6688128=mceliece6688128()
+
+mceliece6688128 = mceliece6688128()
+
 
 class mceliece6688128f(_KEM):
-    PUBLICKEYBYTES=1044992
-    SECRETKEYBYTES=13932
-    CIPHERTEXTBYTES=208
-    BYTES=32
-    _prefix="mceliece_kem_6688128f"
+    PUBLICKEYBYTES = 1044992
+    SECRETKEYBYTES = 13932
+    CIPHERTEXTBYTES = 208
+    BYTES = 32
+    _prefix = "mceliece_kem_6688128f"
 
-mceliece6688128f=mceliece6688128f()
+
+mceliece6688128f = mceliece6688128f()
+
 
 class mceliece6688128pc(_KEM):
-    PUBLICKEYBYTES=1044992
-    SECRETKEYBYTES=13932
-    CIPHERTEXTBYTES=240
-    BYTES=32
-    _prefix="mceliece_kem_6688128pc"
+    PUBLICKEYBYTES = 1044992
+    SECRETKEYBYTES = 13932
+    CIPHERTEXTBYTES = 240
+    BYTES = 32
+    _prefix = "mceliece_kem_6688128pc"
 
-mceliece6688128pc=mceliece6688128pc()
+
+mceliece6688128pc = mceliece6688128pc()
+
 
 class mceliece6688128pcf(_KEM):
-    PUBLICKEYBYTES=1044992
-    SECRETKEYBYTES=13932
-    CIPHERTEXTBYTES=240
-    BYTES=32
-    _prefix="mceliece_kem_6688128pcf"
+    PUBLICKEYBYTES = 1044992
+    SECRETKEYBYTES = 13932
+    CIPHERTEXTBYTES = 240
+    BYTES = 32
+    _prefix = "mceliece_kem_6688128pcf"
 
-mceliece6688128pcf=mceliece6688128pcf()
+
+mceliece6688128pcf = mceliece6688128pcf()
+
 
 class mceliece8192128(_KEM):
-    PUBLICKEYBYTES=1357824
-    SECRETKEYBYTES=14120
-    CIPHERTEXTBYTES=208
-    BYTES=32
-    _prefix="mceliece_kem_8192128"
+    PUBLICKEYBYTES = 1357824
+    SECRETKEYBYTES = 14120
+    CIPHERTEXTBYTES = 208
+    BYTES = 32
+    _prefix = "mceliece_kem_8192128"
 
-mceliece8192128=mceliece8192128()
+
+mceliece8192128 = mceliece8192128()
+
 
 class mceliece8192128f(_KEM):
-    PUBLICKEYBYTES=1357824
-    SECRETKEYBYTES=14120
-    CIPHERTEXTBYTES=208
-    BYTES=32
-    _prefix="mceliece_kem_8192128f"
+    PUBLICKEYBYTES = 1357824
+    SECRETKEYBYTES = 14120
+    CIPHERTEXTBYTES = 208
+    BYTES = 32
+    _prefix = "mceliece_kem_8192128f"
 
-mceliece8192128f=mceliece8192128f()
+
+mceliece8192128f = mceliece8192128f()
+
 
 class mceliece8192128pc(_KEM):
-    PUBLICKEYBYTES=1357824
-    SECRETKEYBYTES=14120
-    CIPHERTEXTBYTES=240
-    BYTES=32
-    _prefix="mceliece_kem_8192128pc"
+    PUBLICKEYBYTES = 1357824
+    SECRETKEYBYTES = 14120
+    CIPHERTEXTBYTES = 240
+    BYTES = 32
+    _prefix = "mceliece_kem_8192128pc"
 
-mceliece8192128pc=mceliece8192128pc()
+
+mceliece8192128pc = mceliece8192128pc()
+
 
 class mceliece8192128pcf(_KEM):
-    PUBLICKEYBYTES=1357824
-    SECRETKEYBYTES=14120
-    CIPHERTEXTBYTES=240
-    BYTES=32
-    _prefix="mceliece_kem_8192128pcf"
+    PUBLICKEYBYTES = 1357824
+    SECRETKEYBYTES = 14120
+    CIPHERTEXTBYTES = 240
+    BYTES = 32
+    _prefix = "mceliece_kem_8192128pcf"
 
-mceliece8192128pcf=mceliece8192128pcf()
+
+mceliece8192128pcf = mceliece8192128pcf()
+
 
 class mceliece460896(_KEM):
-    PUBLICKEYBYTES=524160
-    SECRETKEYBYTES=13608
-    CIPHERTEXTBYTES=156
-    BYTES=32
-    _prefix="mceliece_kem_460896"
+    PUBLICKEYBYTES = 524160
+    SECRETKEYBYTES = 13608
+    CIPHERTEXTBYTES = 156
+    BYTES = 32
+    _prefix = "mceliece_kem_460896"
 
-mceliece460896=mceliece460896()
+
+mceliece460896 = mceliece460896()
+
 
 class mceliece460896f(_KEM):
-    PUBLICKEYBYTES=524160
-    SECRETKEYBYTES=13608
-    CIPHERTEXTBYTES=156
-    BYTES=32
-    _prefix="mceliece_kem_460896f"
+    PUBLICKEYBYTES = 524160
+    SECRETKEYBYTES = 13608
+    CIPHERTEXTBYTES = 156
+    BYTES = 32
+    _prefix = "mceliece_kem_460896f"
 
-mceliece460896f=mceliece460896f()
+
+mceliece460896f = mceliece460896f()
+
 
 class mceliece460896pc(_KEM):
-    PUBLICKEYBYTES=524160
-    SECRETKEYBYTES=13608
-    CIPHERTEXTBYTES=188
-    BYTES=32
-    _prefix="mceliece_kem_460896pc"
+    PUBLICKEYBYTES = 524160
+    SECRETKEYBYTES = 13608
+    CIPHERTEXTBYTES = 188
+    BYTES = 32
+    _prefix = "mceliece_kem_460896pc"
 
-mceliece460896pc=mceliece460896pc()
+
+mceliece460896pc = mceliece460896pc()
+
 
 class mceliece460896pcf(_KEM):
-    PUBLICKEYBYTES=524160
-    SECRETKEYBYTES=13608
-    CIPHERTEXTBYTES=188
-    BYTES=32
-    _prefix="mceliece_kem_460896pcf"
+    PUBLICKEYBYTES = 524160
+    SECRETKEYBYTES = 13608
+    CIPHERTEXTBYTES = 188
+    BYTES = 32
+    _prefix = "mceliece_kem_460896pcf"
 
-mceliece460896pcf=mceliece460896pcf()
+
+mceliece460896pcf = mceliece460896pcf()
+
 
 class mceliece348864(_KEM):
-    PUBLICKEYBYTES=261120
-    SECRETKEYBYTES=6492
-    CIPHERTEXTBYTES=96
-    BYTES=32
-    _prefix="mceliece_kem_348864"
+    PUBLICKEYBYTES = 261120
+    SECRETKEYBYTES = 6492
+    CIPHERTEXTBYTES = 96
+    BYTES = 32
+    _prefix = "mceliece_kem_348864"
 
-mceliece348864=mceliece348864()
+
+mceliece348864 = mceliece348864()
+
 
 class mceliece348864f(_KEM):
-    PUBLICKEYBYTES=261120
-    SECRETKEYBYTES=6492
-    CIPHERTEXTBYTES=96
-    BYTES=32
-    _prefix="mceliece_kem_348864f"
+    PUBLICKEYBYTES = 261120
+    SECRETKEYBYTES = 6492
+    CIPHERTEXTBYTES = 96
+    BYTES = 32
+    _prefix = "mceliece_kem_348864f"
 
-mceliece348864f=mceliece348864f()
+
+mceliece348864f = mceliece348864f()
+
 
 class mceliece348864pc(_KEM):
-    PUBLICKEYBYTES=261120
-    SECRETKEYBYTES=6492
-    CIPHERTEXTBYTES=128
-    BYTES=32
-    _prefix="mceliece_kem_348864pc"
+    PUBLICKEYBYTES = 261120
+    SECRETKEYBYTES = 6492
+    CIPHERTEXTBYTES = 128
+    BYTES = 32
+    _prefix = "mceliece_kem_348864pc"
 
-mceliece348864pc=mceliece348864pc()
+
+mceliece348864pc = mceliece348864pc()
+
 
 class mceliece348864pcf(_KEM):
-    PUBLICKEYBYTES=261120
-    SECRETKEYBYTES=6492
-    CIPHERTEXTBYTES=128
-    BYTES=32
-    _prefix="mceliece_kem_348864pcf"
+    PUBLICKEYBYTES = 261120
+    SECRETKEYBYTES = 6492
+    CIPHERTEXTBYTES = 128
+    BYTES = 32
+    _prefix = "mceliece_kem_348864pcf"
 
-mceliece348864pcf=mceliece348864pcf()
 
+mceliece348864pcf = mceliece348864pcf()
