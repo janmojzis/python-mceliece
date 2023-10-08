@@ -1,7 +1,7 @@
 from ctypes.util import find_library as _find_library
 from ctypes import CDLL as _CDLL
 
-_lib = _CDLL(_find_library('25519'))
+_lib = _CDLL(_find_library('mceliece'))
 
 
 def _check_input(x, xlen, name):
