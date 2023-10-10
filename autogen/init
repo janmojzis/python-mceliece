@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+
+import re
+import subprocess
+
+helpstr = "'''\n"
+with open('README.md') as f:
+   helpstr += f.read()
+helpstr += "'''\n"
+
+with open('src/mceliece/__init__.py', 'w') as f:
+    f.write(helpstr)
+    for size in '6960119', '6688128', '8192128', '460896', '348864':
+        f.write(f'\n')
+        for suffix in '', 'f', 'pc', 'pcf':
+            f.write(f'from .kem import mceliece{size}{suffix}\n')

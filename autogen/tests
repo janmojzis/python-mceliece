@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+for size in '6960119', '6688128', '8192128', '460896', '348864':
+    for suffix in '', 'pc', 'f', 'pcf':
+        with open(f'tests/test_mceliece{size}{suffix}.py', 'w') as f:
+            template = f'''from mceliece import mceliece{size}{suffix}
+
+
+def test_mceliece{size}{suffix}():
+    pk, sk = mceliece{size}{suffix}.keypair()
+    c, k1 = mceliece{size}{suffix}.enc(pk)
+    k2 = mceliece{size}{suffix}.dec(c, sk)
+    assert (k1 == k2)
+'''
+            f.write(template)
