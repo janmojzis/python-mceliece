@@ -1,6 +1,7 @@
 import mceliece
 import os
 
+
 def test_mceliece():
     kems = []
     for name in dir(mceliece):
@@ -10,4 +11,4 @@ def test_mceliece():
         pk, sk = kem.keypair()
         c, k1 = kem.enc(pk)
         k2 = kem.dec(c, sk)
-        assert(k1 == k2)
+        assert (k1 == k2)
