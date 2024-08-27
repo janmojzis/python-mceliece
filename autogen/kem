@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+
+project='mceliece'
+
+_primitives = {
+  'mceliece6960119': {'name': '6960119', 'pkbytes': 1047319, 'skbytes': 13948, 'cbytes': 194},
+  'mceliece6688128': {'name': '6688128', 'pkbytes': 1044992, 'skbytes': 13932, 'cbytes': 208},
+  'mceliece8192128': {'name': '8192128', 'pkbytes': 1357824, 'skbytes': 14120, 'cbytes': 208},
+  'mceliece460896': {'name': '460896', 'pkbytes': 524160, 'skbytes': 13608, 'cbytes': 156},
+  'mceliece348864': {'name': '348864', 'pkbytes': 261120, 'skbytes': 6492, 'cbytes': 96},
+}
+
+primitives = {}
+for primitive in _primitives:
+    for variant in ['', 'f', 'pc', 'pcf']:
+        primitives[f'{primitive}{variant}'] = _primitives[primitive].copy()
+        primitives[f'{primitive}{variant}']['name'] = _primitives[primitive]['name'] + variant
+        if variant.startswith('pc'):
+            primitives[f'{primitive}{variant}']['cbytes'] += 32
+
+
+kem="""from typing import Tuple as _Tuple
+import ctypes as _ct
+from ._lib import _lib, _check_input
+
+
+class _KEM:
+    def __init__(self) -> None:
+        '''
+        '''
+        self._c_keypair = getattr(_lib, '%s_keypair' % self._prefix)
+        self._c_keypair.argtypes = [_ct.c_char_p, _ct.c_char_p]
+        self._c_keypair.restype = None
+        self._c_enc = getattr(_lib, '%s_enc' % self._prefix)
+        self._c_enc.argtypes = [_ct.c_char_p, _ct.c_char_p, _ct.c_char_p]
+        self._c_enc.restype = _ct.c_int
+        self._c_dec = getattr(_lib, '%s_dec' % self._prefix)
+        self._c_dec.argtypes = [_ct.c_char_p, _ct.c_char_p, _ct.c_char_p]
+        self._c_dec.restype = _ct.c_int
+
+    def keypair(self) -> _Tuple[bytes, bytes]:
+        '''
+        Keypair - randomly generates secret key 'sk' and corresponding public key 'pk'.
+        Returns:
+            pk (bytes): public key
+            sk (bytes): secret key
+        '''
+        pk = _ct.create_string_buffer(self.PUBLICKEYBYTES)
+        sk = _ct.create_string_buffer(self.SECRETKEYBYTES)
+        self._c_keypair(pk, sk)
+        return pk.raw, sk.raw
+
+    def enc(self, pk: bytes) -> _Tuple[bytes, bytes]:
+        '''
+        Encapsulation - randomly generates a ciphertext 'c' and the corresponding session key 'k' given Alice's public key 'pk'.
+        Parameters:
+            pk (bytes): public key
+        Returns:
+            c (bytes): ciphertext
+            k (bytes): session key
+        '''
+        _check_input(pk, self.PUBLICKEYBYTES, 'pk')
+        c = _ct.create_string_buffer(self.CIPHERTEXTBYTES)
+        k = _ct.create_string_buffer(self.BYTES)
+        pk = _ct.create_string_buffer(pk)
+        if self._c_enc(c, k, pk):
+            raise Exception('enc failed')
+        return c.raw, k.raw
+
+    def dec(self, c: bytes, sk: bytes) -> bytes:
+        '''
+        Decapsulation - given Alice's secret key 'sk' computes the session key 'k' corresponding to a ciphertext 'c'.
+        Parameters:
+            c (bytes): ciphertext
+            sk (bytes): secret key
+        Returns:
+            k (bytes): session key
+        '''
+        _check_input(c, self.CIPHERTEXTBYTES, 'c')
+        _check_input(sk, self.SECRETKEYBYTES, 'sk')
+        k = _ct.create_string_buffer(self.BYTES)
+        c = _ct.create_string_buffer(c)
+        sk = _ct.create_string_buffer(sk)
+        if self._c_dec(k, c, sk):
+            raise Exception('dec failed')
+        return k.raw
+"""
+
+
+with open(f'src/{project}/kem.py', 'w') as f:
+    f.write(kem)
+    for primitive in primitives:
+        f.write('\n\n')
+        f.write(f'class {primitive}(_KEM):\n')
+        f.write(f'    PUBLICKEYBYTES = {primitives[primitive]["pkbytes"]}\n')
+        f.write(f'    SECRETKEYBYTES = {primitives[primitive]["skbytes"]}\n')
+        f.write(f'    CIPHERTEXTBYTES = {primitives[primitive]["cbytes"]}\n')
+        f.write(f'    BYTES = 32\n')
+        f.write(f'    _prefix = "{project}_kem_{primitives[primitive]["name"]}"\n\n\n')
+        f.write(f'{primitive} = {primitive}()\n')
