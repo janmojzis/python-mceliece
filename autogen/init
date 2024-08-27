@@ -1,13 +1,21 @@
 #!/usr/bin/env python3
 
+project='mceliece'
+primitivename='mceliece'
+
+primitives = []
+for size in '6960119', '6688128', '8192128', '460896', '348864':
+        for suffix in '', 'f', 'pc', 'pcf':
+                primitives.append(f'{primitivename}{size}{suffix}')
+
+
 helpstr = "'''\n"
 with open('README.md') as f:
     helpstr += f.read()
 helpstr += "'''\n"
 
-with open('src/mceliece/__init__.py', 'w') as f:
+with open(f'src/{project}/__init__.py', 'w') as f:
     f.write(helpstr)
-    for size in '6960119', '6688128', '8192128', '460896', '348864':
-        f.write(f'\n')
-        for suffix in '', 'f', 'pc', 'pcf':
-            f.write(f'from .kem import mceliece{size}{suffix}\n')
+    f.write('\n')
+    for primitive in primitives:
+        f.write(f'from .kem import {primitive}\n')
