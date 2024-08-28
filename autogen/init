@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 
 project='mceliece'
-primitivename='mceliece'
-
 primitives = []
 for size in '6960119', '6688128', '8192128', '460896', '348864':
         for suffix in '', 'f', 'pc', 'pcf':
-                primitives.append(f'{primitivename}{size}{suffix}')
-
+                primitives.append(f'mceliece{size}{suffix}')
 
 helpstr = "'''\n"
 with open('README.md') as f:
