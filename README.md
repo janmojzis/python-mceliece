@@ -1,4 +1,5 @@
-Python wrapper around implementation of the Classic McEliece cryptosystem.
+Python wrapper around [mceliece](https://lib.mceliece.org) library,
+wrapper around the Classic McEliece cryptosystem.
 
 To access the Python functions provided by mceliece, import the library (for, e.g., mceliece6960119):
 
